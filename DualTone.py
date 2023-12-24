@@ -17,6 +17,14 @@ from threading import Thread
 import webbrowser
 
 
+# https://coderslegacy.com/add-image-data-files-in-pyinstaller-exe/
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
+
+
 def has_transparency(image):
     "Checks if opening image is transparent"
 
@@ -343,18 +351,30 @@ class DualTone:
         except _tkinter.TclError:
             self.root.geometry("1400x700+0+0")
         self.root.minsize(1200, 700)
-        self.root.iconbitmap("icons/app_icon.ico")
+
+        # activate commented lines with file path and comment active lines if you don't need to use resourse_path
+        # function intended for creating Windows exe file
+
+        #self.root.iconbitmap("icons/app_icon.ico")
+        self.root.iconbitmap(resource_path("icons\\app_icon.ico"))
 
         # Toolbar for all functions
         self.toolbar = Frame(self.root, relief="groove", bd=2)
         self.toolbar.pack(side="top", fill="x")
 
         # image for icons
-        open_icon = ImageTk.PhotoImage(Image.open("icons/icons8-image-64.png").resize((30, 30), Resampling.LANCZOS))
-        save_icon = ImageTk.PhotoImage(Image.open("icons/icons8-save-60.png").resize((28, 28), Resampling.LANCZOS))
-        cmyk_icon = ImageTk.PhotoImage(Image.open("icons/icons8-cmyk-48.png").resize((30, 30), Resampling.LANCZOS))
-        info_icon = ImageTk.PhotoImage(Image.open("icons/icons8-info-60.png").resize((30, 30), Resampling.LANCZOS))
-        switch_icon = ImageTk.PhotoImage(Image.open("icons/icons8-sorting-arrows-20.png"))
+        
+       # open_icon = ImageTk.PhotoImage(Image.open("icons/icons8-image-64.png").resize((30, 30), Resampling.LANCZOS))
+      #  save_icon = ImageTk.PhotoImage(Image.open("icons/icons8-save-60.png").resize((28, 28), Resampling.LANCZOS))
+      #  cmyk_icon = ImageTk.PhotoImage(Image.open("icons/icons8-cmyk-48.png").resize((30, 30), Resampling.LANCZOS))
+      #  info_icon = ImageTk.PhotoImage(Image.open("icons/icons8-info-60.png").resize((30, 30), Resampling.LANCZOS))
+     #   switch_icon = ImageTk.PhotoImage(Image.open("icons/icons8-sorting-arrows-20.png"))
+
+        open_icon = ImageTk.PhotoImage(Image.open(resource_path("icons\\icons8-image-64.png")).resize((30, 30), Resampling.LANCZOS))
+        save_icon = ImageTk.PhotoImage(Image.open(resource_path("icons\\icons8-save-60.png")).resize((28, 28), Resampling.LANCZOS))
+        cmyk_icon = ImageTk.PhotoImage(Image.open(resource_path("icons\\icons8-cmyk-48.png")).resize((30, 30), Resampling.LANCZOS))
+        info_icon = ImageTk.PhotoImage(Image.open(resource_path("icons\\icons8-info-60.png")).resize((30, 30), Resampling.LANCZOS))
+        switch_icon = ImageTk.PhotoImage(Image.open(resource_path("icons\\icons8-sorting-arrows-20.png")))
 
         # 'Open image' button
         self.open_file_button = Button(self.toolbar,
@@ -1407,7 +1427,7 @@ class DualTone:
         text_frame = Frame(root, bg="white")
         text_frame.pack(side='left', fill="both", expand=True)
 
-        icon = ImageTk.PhotoImage(Image.open("icons/app_icon.ico").resize((128, 128), Resampling.LANCZOS))
+        icon = ImageTk.PhotoImage(Image.open(resource_path("icons\\app_icon.ico")).resize((128, 128), Resampling.LANCZOS))
         label_1 = Label(text_frame, image=icon)
         label_1.pack(side='top', pady=20)
 
