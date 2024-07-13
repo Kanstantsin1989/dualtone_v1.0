@@ -1,4 +1,4 @@
-# DualTone v1.0
+# DualTone v1.1
 
 This is a simple app with as user-friendly as possible interface that adds a color filter to your image and changes its brightness and contrast. It does not require any Photoshop or programming skills. Of course, it is not a replacement of professional graphic editors, but if you need to quickly add a color filter to your image, it is very easy to do with this app. Unlike online services, there are no paid plans, no water marks, no file size restrictions. This app supports such image formats as png, bmp, tif, tiff, ppm, pgm, pbm, pcx, tga, ico, jpg, jpeg, jfif, and webp. In addition, you can process transparent png, webp and ico images, and you can convert your image into CMYK color gamma.
 
@@ -94,7 +94,7 @@ Menu that duplicates "Open File" and "Save File" buttons and combobox with color
 
 ## License
 
-Copyright 2023 Kanstantsin Mironau
+Copyright 2024 Kanstantsin Mironau
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
