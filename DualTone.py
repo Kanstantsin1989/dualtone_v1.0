@@ -262,6 +262,7 @@ class ProgressbarFrame(Frame):
     def close_window(self):
         self.destroy()
 
+
 class HyperlinkLabel(Label):
     "Hyperlink to open icons8.com and page with source code on GitHub"
     def __init__(self, master=None, text="", url="", **kwargs):
@@ -343,7 +344,7 @@ class DualTone:
     def initUI(self):
         # standard Tkinter window
         self.root = Tk()
-        self.root.title('DualTone v.1.0')
+        self.root.title('DualTone v.1.1')
 
         # avoids error with "zoomed" state on Linux
         try:
@@ -363,7 +364,7 @@ class DualTone:
         self.toolbar.pack(side="top", fill="x")
 
         # image for icons
-        
+
        # open_icon = ImageTk.PhotoImage(Image.open("icons/icons8-image-64.png").resize((30, 30), Resampling.LANCZOS))
       #  save_icon = ImageTk.PhotoImage(Image.open("icons/icons8-save-60.png").resize((28, 28), Resampling.LANCZOS))
       #  cmyk_icon = ImageTk.PhotoImage(Image.open("icons/icons8-cmyk-48.png").resize((30, 30), Resampling.LANCZOS))
@@ -917,7 +918,8 @@ class DualTone:
 
         # gets copy of self.tint_color_tuple for a case if user clicks 'Cancel'
         rgb_copy = copy.deepcopy(self.tint_color_tuple)
-        self.tint_color_tuple = colorchooser.askcolor()
+        # sets initial color by getting ColorFrame["bg"] 
+        self.tint_color_tuple = colorchooser.askcolor(initialcolor=self.rgb_tint_color_frame["bg"])
         # returns value of previous color if user clicked "Cancel"
         if self.tint_color_tuple == (None, None):
             self.tint_color_tuple = rgb_copy
@@ -935,7 +937,8 @@ class DualTone:
         try:
             # gets current color for a case if user clicks 'Cancel'
             rgb_copy = copy.deepcopy(self.rgb1_tuple)
-            self.rgb1_tuple = colorchooser.askcolor()
+            # sets initial color by getting ColorFrame["bg"]
+            self.rgb1_tuple = colorchooser.askcolor(initialcolor=self.rgb1_frame["bg"])
             # saves current color if user clicks "Cancel"
             if self.rgb1_tuple == (None, None):
                 self.rgb1_tuple = rgb_copy
@@ -957,7 +960,8 @@ class DualTone:
         "Sets second color with tkinter colorchooser.askcolor(), the same as setFirstRGB method"
         try:
             rgb_copy = copy.deepcopy(self.rgb2_tuple)
-            self.rgb2_tuple = colorchooser.askcolor()
+            # sets initial color by getting ColorFrame["bg"]
+            self.rgb2_tuple = colorchooser.askcolor(initialcolor=self.rgb2_frame["bg"])
             # saves current color if user clicks "Cancel"
             if self.rgb2_tuple == (None, None):
                 self.rgb2_tuple = rgb_copy
@@ -1431,10 +1435,10 @@ class DualTone:
         label_1 = Label(text_frame, image=icon)
         label_1.pack(side='top', pady=20)
 
-        label_2 = Label(text_frame, text="DualTone v.1.0", font=("Helvetica", 18, "bold"), bg="white")
+        label_2 = Label(text_frame, text="DualTone v.1.1", font=("Helvetica", 18, "bold"), bg="white")
         label_2.pack(side='top')
 
-        label_3 = Label(text_frame, text="Copyright 2023 Kanstantsin Mironau", font="Helvetica 11", bg="white")
+        label_3 = Label(text_frame, text="Copyright 2024 Kanstantsin Mironau", font="Helvetica 11", bg="white")
         label_3.pack(side='top')
 
         label_4 = HyperlinkLabel(text_frame,
@@ -1469,7 +1473,7 @@ class DualTone:
         license_text = Text(text_frame, font="Helvetica 12", foreground="black", wrap="word", bd=0)
         license_text.pack(side="top", fill="both", expand=True, padx=15, pady=15)
         license_text.insert("end", license)
-
+        
         donations = '''
 If you like this app, you can donate the author:
 
@@ -1488,6 +1492,7 @@ Payoneer: 7524440@gmail.com
 
         scrollbar = ttk.Scrollbar(root, orient="vertical", command=license_text.yview)
         license_text.configure(yscrollcommand=scrollbar.set)
+        license_text.configure(state="disabled")
         scrollbar.pack(side="left", fill="y")
         root.mainloop()
 
