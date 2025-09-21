@@ -124,6 +124,4 @@ Optimism: 0xBEBc82F17eFdf78839364974f64C9c8665da5B7B
 
 Paypal: 7524440@gmail.com
 
-Payoneer: 7524440@gmail.com
-
 E-mail to contact the author: 7524440@gmail.com
